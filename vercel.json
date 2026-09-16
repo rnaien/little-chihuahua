@@ -1,5 +1,6 @@
 {
   "redirects": [
+    { "source": "/k%C3%B6pek/:path*", "destination": "/:path*", "permanent": false },
     { "source": "/köpek/:path*", "destination": "/:path*", "permanent": false }
   ]
 }
