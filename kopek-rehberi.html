@@ -104,7 +104,15 @@
 
 <footer>
   <p>Bir Claude Code öğrenme projesi — Tuana Damla Çatlı</p>
+  <p id="env-check" style="font-size:0.8rem;opacity:0.6;"></p>
 </footer>
+
+<script>
+fetch('/api/status').then(r => r.json()).then(d => {
+  document.getElementById('env-check').textContent =
+    `Bu sayfa "${d.envVar}" adlı Vercel ortam değişkenini kullanır; değeri güvenlik nedeniyle Git'e commit edilmez, yalnızca Vercel'in sunucu ayarlarında tutulur.`;
+}).catch(() => {});
+</script>
 
 </body>
 </html>
