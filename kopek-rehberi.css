@@ -1,0 +1,426 @@
+:root {
+  --bg-color: #fbf3e6;
+  --card-bg: #ffffff;
+  --text-color: #4a3728;
+  --muted-text: #7a6653;
+  --accent-color: #3f7d4f;
+  --accent-hover: #2f5f3c;
+  --highlight-color: #e0793c;
+  --mid-color: #d9a441;
+  --size-color: #8a5a2e;
+  --intelligence-color: #5b6ea3;
+  --border-color: #ecdfc9;
+}
+
+body {
+  font-family: 'Inter', Helvetica, Arial, sans-serif;
+  max-width: 720px;
+  margin: 0 auto 60px;
+  padding: 0 20px;
+  line-height: 1.6;
+  font-size: 18px;
+  color: var(--text-color);
+  background: var(--bg-color);
+}
+
+h1, h2 {
+  font-family: 'Fredoka', 'Inter', sans-serif;
+}
+
+.dog-header {
+  text-align: center;
+  padding-top: 22px;
+}
+
+.dog-brand {
+  display: inline-block;
+  font-family: 'Fredoka', 'Inter', sans-serif;
+  font-size: 1.4em;
+  font-weight: 600;
+  color: var(--text-color);
+  text-decoration: none;
+}
+
+.dog-brand:hover,
+.dog-brand:focus {
+  color: var(--accent-color);
+}
+
+.dog-icon {
+  width: 1.4em;
+  height: 1.4em;
+  vertical-align: middle;
+  margin-right: 6px;
+  flex-shrink: 0;
+}
+
+.hero {
+  text-align: center;
+  padding: 24px 0 12px;
+}
+
+.hero h1 {
+  font-size: clamp(1.8em, 4vw + 1em, 2.6em);
+  margin-bottom: 0.3em;
+  animation: title-pop 0.6s ease-out;
+}
+
+.hero p {
+  color: var(--muted-text);
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+/* page decoration */
+.page-decor {
+  position: relative;
+  left: 50%;
+  right: 50%;
+  width: 100vw;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  overflow: hidden;
+}
+
+.page-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.paw-decor {
+  position: absolute;
+  width: 60px;
+  color: var(--accent-color);
+  opacity: 0.14;
+  z-index: 0;
+  animation: paw-drift 13s ease-in-out infinite, paw-wag 4s ease-in-out infinite;
+}
+
+/* positioned relative to the centered content column's edge, with a fixed gap so they stay close without touching it */
+.paw-decor--1 { top: 6%; left: calc(50% - 430px); width: 46px; animation-duration: 11s, 3.6s; }
+.paw-decor--2 { top: 22%; right: calc(50% - 446px); width: 66px; animation-duration: 15s, 4.4s; animation-delay: -2s, 0s; }
+.paw-decor--3 { bottom: 18%; left: calc(50% - 440px); width: 52px; animation-duration: 12s, 3.8s; animation-delay: -5s, 0s; }
+.paw-decor--4 { bottom: 6%; right: calc(50% - 422px); width: 40px; animation-duration: 10s, 4.2s; animation-delay: -3s, 0s; }
+
+/* hide once there isn't enough side margin to keep them off the content */
+@media (max-width: 900px) {
+  .paw-decor {
+    display: none;
+  }
+}
+
+@keyframes paw-drift {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 0 -20px; }
+}
+
+@keyframes paw-wag {
+  0%, 100% { transform: rotate(-8deg); }
+  50% { transform: rotate(8deg); }
+}
+
+@keyframes title-pop {
+  0% { transform: scale(0.85); opacity: 0; }
+  60% { transform: scale(1.05); opacity: 1; }
+  100% { transform: scale(1); }
+}
+
+.icon-row {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin: 30px 0;
+}
+
+.icon-row .dog-icon {
+  width: 2.6em;
+  height: 2.6em;
+  margin-right: 0;
+  animation: paw-wag 2.6s ease-in-out infinite;
+}
+
+.icon-row .dog-icon:nth-child(1) { animation-delay: 0s; }
+.icon-row .dog-icon:nth-child(2) { animation-delay: 0.15s; }
+.icon-row .dog-icon:nth-child(3) { animation-delay: 0.3s; }
+.icon-row .dog-icon:nth-child(4) { animation-delay: 0.45s; }
+.icon-row .dog-icon:nth-child(5) { animation-delay: 0.6s; }
+
+.cta-row {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+
+.cta-btn {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--accent-color), var(--highlight-color));
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  font-family: 'Fredoka', 'Inter', sans-serif;
+  padding: 14px 26px;
+  border-radius: 999px;
+}
+
+.cta-btn:hover,
+.cta-btn:focus {
+  filter: brightness(1.08);
+  animation: btn-bounce 0.5s ease;
+}
+
+@keyframes btn-bounce {
+  0%, 100% { transform: translateY(0); }
+  30% { transform: translateY(-6px); }
+  50% { transform: translateY(0); }
+  70% { transform: translateY(-3px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .paw-decor,
+  .icon-row .dog-icon,
+  .hero h1,
+  .breed-page-header h1,
+  .breed-page-header .dog-icon,
+  .breed-card:hover .dog-icon,
+  .breed-card:focus .dog-icon,
+  .cta-btn:hover,
+  .cta-btn:focus,
+  .breed-pager a:hover,
+  .breed-pager a:focus,
+  .breed-card:hover .card-tail,
+  .breed-card:focus .card-tail {
+    animation: none;
+  }
+}
+
+section {
+  margin-top: 48px;
+}
+
+section h2 {
+  font-size: 1.5em;
+  color: var(--accent-color);
+  margin-bottom: 18px;
+}
+
+.breed-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 22px;
+  row-gap: 48px;
+}
+
+.breed-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  padding: 20px 22px;
+  color: var(--text-color);
+  text-decoration: none;
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.breed-card:hover,
+.breed-card:focus {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 24px rgba(74, 55, 40, 0.12);
+}
+
+.breed-card:hover .dog-icon,
+.breed-card:focus .dog-icon {
+  animation: paw-wag 0.6s ease-in-out;
+}
+
+.card-tail {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  width: 20px;
+  height: 30px;
+  opacity: 0.9;
+  pointer-events: none;
+  transform: translateX(-50%) rotate(-16deg);
+  transform-origin: 50% 100%;
+}
+
+.breed-card:hover .card-tail,
+.breed-card:focus .card-tail {
+  animation: tail-wag 0.5s ease-in-out infinite;
+}
+
+@keyframes tail-wag {
+  0%, 100% { transform: translateX(-50%) rotate(-16deg); }
+  50% { transform: translateX(-50%) rotate(16deg); }
+}
+
+.breed-card h3 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  font-family: 'Fredoka', 'Inter', sans-serif;
+  font-size: 1.15em;
+}
+
+.breed-card:hover h3,
+.breed-card:focus h3 {
+  color: var(--accent-color);
+}
+
+.breed-page-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  text-align: center;
+  padding: 24px 0 4px;
+}
+
+.breed-page-header .dog-icon {
+  width: 2.4em;
+  height: 2.4em;
+  margin-right: 0;
+  animation: paw-wag 3s ease-in-out infinite;
+}
+
+.breed-page-header h1 {
+  margin: 0;
+  font-size: clamp(1.6em, 4vw + 1em, 2.3em);
+  animation: title-pop 0.6s ease-out;
+}
+
+.page-origin {
+  text-align: center;
+  padding-top: 0;
+  color: var(--highlight-color);
+  font-weight: 600;
+}
+
+.breed-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 10px 0;
+}
+
+.breed-stats--center {
+  justify-content: center;
+}
+
+.stat-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: var(--bg-color);
+  border: 1px solid var(--border-color);
+  border-radius: 999px;
+  padding: 4px 12px;
+  font-size: 0.8em;
+  font-weight: 600;
+  color: var(--muted-text);
+}
+
+.stat-badge[data-cat="boyut"] {
+  border-color: var(--size-color);
+  color: var(--size-color);
+}
+
+.stat-badge[data-cat="enerji"] {
+  border-color: var(--mid-color);
+  color: var(--mid-color);
+}
+
+.stat-badge[data-cat="tuy"] {
+  border-color: var(--highlight-color);
+  color: var(--highlight-color);
+}
+
+.stat-badge[data-cat="egitim"] {
+  border-color: var(--accent-color);
+  color: var(--accent-color);
+}
+
+.stat-badge[data-cat="zeka"] {
+  border-color: var(--intelligence-color);
+  color: var(--intelligence-color);
+}
+
+.care-list {
+  display: grid;
+  gap: 14px;
+}
+
+.care-item {
+  background: var(--card-bg);
+  border-radius: 16px;
+  padding: 16px 20px;
+  border-left: 5px solid var(--accent-color);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.care-item:hover,
+.care-item:focus-within {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 24px rgba(74, 55, 40, 0.1);
+}
+
+.care-item h3 {
+  margin: 0 0 4px;
+  font-size: 1.05em;
+}
+
+.care-item p {
+  margin: 0;
+  color: var(--muted-text);
+  font-size: 0.95em;
+}
+
+.breed-desc {
+  text-align: center;
+  color: var(--muted-text);
+  max-width: 520px;
+  margin: 0 auto 8px;
+}
+
+.breed-pager {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 40px;
+}
+
+.breed-pager a {
+  color: var(--accent-color);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.breed-pager a:hover,
+.breed-pager a:focus {
+  color: var(--accent-hover);
+  animation: btn-bounce 0.5s ease;
+}
+
+.breed-pager .pager-next {
+  margin-left: auto;
+}
+
+footer {
+  margin-top: 56px;
+  text-align: center;
+  color: var(--muted-text);
+  font-size: 0.85em;
+}
