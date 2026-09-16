@@ -1,0 +1,5 @@
+{
+  "redirects": [
+    { "source": "/köpek/:path*", "destination": "/:path*", "permanent": false }
+  ]
+}
